@@ -1,25 +1,33 @@
-export default function Page() {
-  const cards = [
-    'Portfolio Summary',
-    'Firms',
-    'Advisers',
-    'Clients',
-    'Accounts',
-    'Reports'
-  ];
+import { DashboardCard } from '../components/DashboardCard'
+import { AumChart } from '../components/AumChart'
 
-  return (
-    <main style={{padding:40,fontFamily:'sans-serif'}}>
-      <h1>McLaren Capital Adviser Dashboard</h1>
-      <p>Next.js dashboard designed for Finio MCP integrations.</p>
-      <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:16}}>
-        {cards.map(card => (
-          <div key={card} style={{border:'1px solid #ddd',padding:16,borderRadius:8}}>
-            <h3>{card}</h3>
-            <p>Connect to corresponding Finio MCP tool.</p>
-          </div>
-        ))}
-      </div>
-    </main>
-  )
+export default function Page(){
+ return (
+  <main className='p-10'>
+   <h1 className='text-4xl font-bold mb-2'>McLaren Capital</h1>
+   <p className='mb-8 text-slate-600'>Finio Adviser Dashboard</p>
+
+   <div className='grid md:grid-cols-4 gap-4 mb-8'>
+    <DashboardCard title='Total AUM' value='£125m' />
+    <DashboardCard title='Clients' value='842' />
+    <DashboardCard title='Advisers' value='24' />
+    <DashboardCard title='Accounts' value='1,563' />
+   </div>
+
+   <div className='grid md:grid-cols-2 gap-6'>
+    <AumChart />
+    <div className='bg-white rounded-xl shadow p-6'>
+      <h3 className='font-semibold mb-4'>Finio MCP Integrations</h3>
+      <ul>
+       <li>Portfolio Summary</li>
+       <li>Firms</li>
+       <li>Advisers</li>
+       <li>Clients</li>
+       <li>Accounts</li>
+       <li>Reports</li>
+      </ul>
+    </div>
+   </div>
+  </main>
+ )
 }
